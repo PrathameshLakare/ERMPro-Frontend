@@ -25,8 +25,8 @@ type AssignmentFormData = {
 };
 
 const CreateAssignment = () => {
-  const { engineers, loading, error } = useEngineers();
-  const { projects } = useProjects();
+  const { engineers = [], loading, error } = useEngineers();
+  const { projects = [] } = useProjects();
 
   const url = import.meta.env.VITE_API_URL;
 
@@ -81,7 +81,7 @@ const CreateAssignment = () => {
                       <SelectValue placeholder="Select Engineer" />
                     </SelectTrigger>
                     <SelectContent>
-                      {engineers.map((e) => (
+                      {engineers?.map((e) => (
                         <SelectItem key={e._id} value={e._id}>
                           {e.name}
                         </SelectItem>
@@ -100,7 +100,7 @@ const CreateAssignment = () => {
                       <SelectValue placeholder="Select Project" />
                     </SelectTrigger>
                     <SelectContent>
-                      {projects.map((p) => (
+                      {projects?.map((p) => (
                         <SelectItem key={p._id} value={p._id}>
                           {p.name}
                         </SelectItem>
