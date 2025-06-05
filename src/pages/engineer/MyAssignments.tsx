@@ -14,8 +14,8 @@ export const MyAssignments = () => {
     }
   }, [user]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="text-center pt-4">Loading...</p>;
+  if (error) return <p className="text-center pt-4">Error: {error}</p>;
 
   return (
     <Sidebar>
