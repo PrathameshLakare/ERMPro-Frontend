@@ -19,7 +19,7 @@ export const MyAssignments = () => {
 
   return (
     <Sidebar>
-      <div className="p-6 max-w-7xl mx-auto">
+      <div className="p-6 max-w-5xl mx-auto">
         {user && (
           <p className="text-sm text-muted-foreground mb-1">
             Welcome back,{" "}
