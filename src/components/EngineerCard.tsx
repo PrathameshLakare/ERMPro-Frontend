@@ -46,11 +46,12 @@ const EngineerCard = ({ engineer }: EngineerCardProps) => {
         <p className="text-sm text-muted-foreground mb-2">{email}</p>
 
         <div className="my-4 flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <Badge key={skill} variant="outline">
-              {skill}
-            </Badge>
-          ))}
+          {skills &&
+            skills.map((skill) => (
+              <Badge key={skill} variant="outline">
+                {skill}
+              </Badge>
+            ))}
         </div>
 
         <p className="text-sm text-muted-foreground mb-1">Capacity Usage</p>
