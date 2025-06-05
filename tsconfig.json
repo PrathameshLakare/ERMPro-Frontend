@@ -4,15 +4,15 @@
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
-    "moduleResolution": "Node",               // ✅ Add this
-    "esModuleInterop": true,                  // ✅ Add this
-    "allowSyntheticDefaultImports": true,     // ✅ Add this
-    "resolveJsonModule": true,                // ✅ Add this
+    "moduleResolution": "bundler", 
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "vite.config.ts"],        // ✅ Ensure these are included
+  "include": ["src", "vite.config.ts"],
   "exclude": ["node_modules"]
 }
