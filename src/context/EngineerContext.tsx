@@ -30,41 +30,14 @@ export const EngineerProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchCapacityByEngineerId = async (id: string) => {
-    const res = await fetch(`${url}/api/engineers/${id}/capacity`);
-    if (!res.ok) throw new Error("Failed to fetch capacity");
-    return res.json();
-  };
-
   const fetchEngineers = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${url}/api/engineers`);
+      const res = await fetch(`${url}/api/engineers/with-capacity`);
       if (!res.ok) throw new Error("Failed to fetch engineers");
-      const data: Omit<Engineer, "maxCapacity" | "availableCapacity">[] =
-        await res.json();
-
-      const engineersWithCapacity: Engineer[] = await Promise.all(
-        data.map(async (eng) => {
-          try {
-            const capacity = await fetchCapacityByEngineerId(eng._id);
-            return {
-              ...eng,
-              maxCapacity: capacity.maxCapacity,
-              availableCapacity: capacity.availableCapacity,
-            };
-          } catch {
-            return {
-              ...eng,
-              maxCapacity: 0,
-              availableCapacity: 0,
-            };
-          }
-        })
-      );
-
-      setEngineers(engineersWithCapacity);
+      const data: Engineer[] = await res.json();
+      setEngineers(data);
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
