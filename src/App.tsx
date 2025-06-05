@@ -19,93 +19,68 @@ import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
-    <ProfileProvider>
-      <EngineerProvider>
-        <ProjectsProvider>
-          <AssignmentsProvider>
-            <Router>
-              <MainLayout />
-              <Routes>
-                <Route path="/" element={<Login />} />
-                <Route
-                  path="/manager/team-overview"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <ManagerDashboard />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/manager/create-assignment"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <CreateAssignment />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/manager/project-management"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <ProjectManagement />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/projects/:id"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <ProjectDetails />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/create-project"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <CreateProject />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/assignments/all"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <AllAssignments />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/manager/analytics"
-                  element={
-                    <PrivateRoute allowedRoles={["manager"]}>
-                      <AnalyticsPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/engineer/assignments"
-                  element={
-                    <PrivateRoute allowedRoles={["engineer"]}>
-                      <MyAssignments />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/engineer/profile"
-                  element={
-                    <PrivateRoute allowedRoles={["engineer"]}>
-                      <Profile />
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-              <Toaster position="bottom-right" richColors closeButton />
-            </Router>
-          </AssignmentsProvider>
-        </ProjectsProvider>
-      </EngineerProvider>
-    </ProfileProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute allowedRoles={["manager", "engineer"]}>
+              <ProfileProvider>
+                <EngineerProvider>
+                  <ProjectsProvider>
+                    <AssignmentsProvider>
+                      <MainLayout />
+                      <Routes>
+                        {/* Manager Routes */}
+                        <Route
+                          path="/manager/team-overview"
+                          element={<ManagerDashboard />}
+                        />
+                        <Route
+                          path="/manager/create-assignment"
+                          element={<CreateAssignment />}
+                        />
+                        <Route
+                          path="/manager/project-management"
+                          element={<ProjectManagement />}
+                        />
+                        <Route
+                          path="/projects/:id"
+                          element={<ProjectDetails />}
+                        />
+                        <Route
+                          path="/create-project"
+                          element={<CreateProject />}
+                        />
+                        <Route
+                          path="/assignments/all"
+                          element={<AllAssignments />}
+                        />
+                        <Route
+                          path="/manager/analytics"
+                          element={<AnalyticsPage />}
+                        />
+
+                        {/* Engineer Routes */}
+                        <Route
+                          path="/engineer/assignments"
+                          element={<MyAssignments />}
+                        />
+                        <Route path="/engineer/profile" element={<Profile />} />
+                      </Routes>
+                    </AssignmentsProvider>
+                  </ProjectsProvider>
+                </EngineerProvider>
+              </ProfileProvider>
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+
+      <Toaster position="bottom-right" richColors closeButton />
+    </Router>
   );
 }
 
