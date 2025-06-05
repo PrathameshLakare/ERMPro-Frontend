@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useProfile } from "@/context/ProfileContext";
 import { Label } from "@radix-ui/react-label";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ type LoginFormInputs = {
 const url = import.meta.env.VITE_API_URL;
 
 export const Login = () => {
-  const { setToken } = useProfile();
   const {
     register,
     handleSubmit,
@@ -41,7 +39,6 @@ export const Login = () => {
 
       const json = await res.json();
       localStorage.setItem("token", json.token);
-      setToken(json.token);
       localStorage.setItem("role", json.user.role);
 
       if (json.user.role === "manager") {
