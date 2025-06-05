@@ -98,6 +98,7 @@ A full-stack application to manage engineering team assignments across projects.
 
 - `GET /api/engineers` – Get a list of all engineers
 - `GET /api/engineers/:id/capacity` – Get capacity details for a specific engineer
+- `GET /api/engineers/with-capacity` - Get all engineers with capacity
 
 ### 📁 Projects
 
