@@ -37,17 +37,17 @@ const MyAssignmentCard = ({ assignment }: MyAssignmentCardProps) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{project.name}</CardTitle>
+        <CardTitle>{project?.name}</CardTitle>
         <CardDescription>{role}</CardDescription>
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-2">
-          {project.description}
+          {project?.description}
         </p>
 
         <div className="my-4 flex flex-wrap gap-2 text-sm text-muted-foreground mb-2">
           Skills:{" "}
-          {project.requiredSkills.map((skill) => (
+          {project?.requiredSkills.map((skill) => (
             <Badge key={skill} variant="outline">
               {skill}
             </Badge>
@@ -55,8 +55,8 @@ const MyAssignmentCard = ({ assignment }: MyAssignmentCardProps) => {
         </div>
 
         <p className="text-sm text-muted-foreground mb-2">
-          Project Duration: {new Date(project.startDate).toLocaleDateString()} -{" "}
-          {new Date(project.endDate).toLocaleDateString()}
+          Project Duration: {new Date(project?.startDate).toLocaleDateString()}{" "}
+          - {new Date(project?.endDate).toLocaleDateString()}
         </p>
 
         <p className="text-sm text-muted-foreground mb-2">
@@ -65,11 +65,11 @@ const MyAssignmentCard = ({ assignment }: MyAssignmentCardProps) => {
         </p>
 
         <p className="text-sm text-muted-foreground mb-2">
-          Team Size: {project.teamSize}
+          Team Size: {project?.teamSize}
         </p>
 
-        <Badge variant={project.status === "active" ? "default" : "secondary"}>
-          {project.status.toUpperCase()}
+        <Badge variant={project?.status === "active" ? "default" : "secondary"}>
+          {project?.status.toUpperCase()}
         </Badge>
       </CardContent>
     </Card>
