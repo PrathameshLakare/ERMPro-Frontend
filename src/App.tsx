@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login } from "./pages/login/Login";
-import Home from "./pages/Home";
 import PrivateRoute from "./routes/PrivateRoute";
 import ManagerDashboard from "./pages/manager/TeamOverview";
 import CreateAssignment from "./pages/manager/CreateAssignment";
@@ -28,7 +27,6 @@ function App() {
               <MainLayout />
               <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/home" element={<Home />} />
                 <Route
                   path="/manager/team-overview"
                   element={
