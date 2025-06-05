@@ -60,7 +60,7 @@ A full-stack application to manage engineering team assignments across projects.
 
 ### Tools Used
 
-- **ChatGPT (GPT-4o)**: Used for generating logic for assignment calculation, designing schema structures, form validations, and Redux slices.
+- **ChatGPT (GPT-4o)**: Used for generating logic for assignment calculation, designing schema structures, form validations, and to used context hook.
 
 ### Examples
 
@@ -170,5 +170,7 @@ MONGO_URI=your-mogoUri-here
 JWT_SECRET=your-jwt-secrete-here
 
 FRONTEND_URL=your-frontend-url-here(http://localhost:5173)
+
+PORT=5000
 
 ```
